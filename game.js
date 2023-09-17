@@ -8,7 +8,7 @@ class GameScene extends Phaser.Scene {
 	}
 
 	create() {
-		g.number = 10
+		g.number = 5
 		g.arr = []
 
 		setTimeout(() => {
