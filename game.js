@@ -56,9 +56,9 @@ class GameScene extends Phaser.Scene {
 function randomVelocity() {
 	let choice = Math.floor(Math.random() * 2)
 	if (choice === 1) {
-		return Math.floor(Math.random() * 300) + 100
+		return Math.floor(Math.random() * 200) + 100
 	} else {
-		return -Math.floor(Math.random() * 300) - 100
+		return -Math.floor(Math.random() * 200) - 100
 	}
 
 }
