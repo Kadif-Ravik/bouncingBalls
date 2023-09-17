@@ -8,7 +8,7 @@ class GameScene extends Phaser.Scene {
 	}
 
 	create() {
-		g.number = 20
+		g.number = 30
 		g.arr = []
 
 		setTimeout(() => {
@@ -19,7 +19,7 @@ class GameScene extends Phaser.Scene {
 				g.circle.body.setCollideWorldBounds(true,1,1)
 				g.arr.push(g.circle)
 		}
-		},2000)
+		},2500)
 		setTimeout(() => {
 			for (let i = 0; i < g.number; i++) {
 				g.circle = this.add.circle(Math.random(Math.floor()) * config.width,Math.random(Math.floor()) * config.height,15,randomColor())
@@ -28,7 +28,7 @@ class GameScene extends Phaser.Scene {
 				g.circle.body.setCollideWorldBounds(true,1,1)
 				g.arr.push(g.circle)
 		}
-		},4000)
+		},5000)
 		setTimeout(() => {
 			for (let i = 0; i < g.number; i++) {
 				g.circle = this.add.circle(Math.random(Math.floor()) * config.width,Math.random(Math.floor()) * config.height,20,randomColor())
@@ -37,14 +37,14 @@ class GameScene extends Phaser.Scene {
 				g.circle.body.setCollideWorldBounds(true,1,1)
 				g.arr.push(g.circle)
 			}
-		},6000)
+		},7500)
 		//Only changed two things, height and delay. Can I add a function that allows me to write the code once and reference it to add two instances of itself with only the changed values needing to be written?
 
 		setInterval(() => {
 			for (let i = 0; i < g.arr.length; i++) {
 				g.arr[i].fillColor = randomColor()
 			}
-		},2500)
+		},2750)
 	}
 	
 	update() {
@@ -56,9 +56,9 @@ class GameScene extends Phaser.Scene {
 function randomVelocity() {
 	let choice = Math.floor(Math.random() * 2)
 	if (choice === 1) {
-		return Math.floor(Math.random() * 700) + 100
+		return Math.floor(Math.random() * 500) + 100
 	} else {
-		return -Math.floor(Math.random() * 700) - 100
+		return -Math.floor(Math.random() * 500) - 100
 	}
 
 }
@@ -72,6 +72,7 @@ function randomColor() {
 		c += d[Math.floor(Math.random() * 16)]
 		//returns a number from 0 to 15
 	}
+	//concats 0x to random hexdec 'c'
 	return '0x' + c 
 }
 
