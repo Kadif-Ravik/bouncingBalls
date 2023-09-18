@@ -18,7 +18,7 @@ class GameScene extends Phaser.Scene {
 				g.circle.body.setVelocity(randomVelocity(), randomVelocity())
 				g.circle.body.setCollideWorldBounds(true,1.1,1.1)
 				g.arr.push(g.circle)
-				//this.physics.add.collider(g.arr);
+				this.physics.add.collider(g.arr);
 		}
 		},2500)
 		setTimeout(() => {
