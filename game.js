@@ -16,9 +16,9 @@ class GameScene extends Phaser.Scene {
 				g.circle = this.add.circle(Math.random(Math.floor()) * config.width,Math.random(Math.floor()) * config.height,10,randomColor())
 				this.physics.add.existing(g.circle)
 				g.circle.body.setVelocity(randomVelocity(), randomVelocity())
-				g.circle.body.setCollideWorldBounds(true,1.2,.8)
+				g.circle.body.setCollideWorldBounds(true,1.1,1.1)
 				g.arr.push(g.circle)
-				this.physics.add.collider(g.arr);
+				//this.physics.add.collider(g.arr);
 		}
 		},2500)
 		setTimeout(() => {
@@ -26,22 +26,24 @@ class GameScene extends Phaser.Scene {
 				g.circle = this.add.circle(Math.random(Math.floor()) * config.width,Math.random(Math.floor()) * config.height,15,randomColor())
 				this.physics.add.existing(g.circle)
 				g.circle.body.setVelocity(randomVelocity(), randomVelocity())
-				g.circle.body.setCollideWorldBounds(true,.8,1.2)
-				this.physics.add.collider(g.arr)
+				g.circle.body.setCollideWorldBounds(true,1.1,1.1)
 				g.arr.push(g.circle);
 				
 		}
 		},5000)
 		
-		/*setTimeout(() => {
+		setTimeout(() => {
 			for (let i = 0; i < g.number; i++) {
 				g.circle = this.add.circle(Math.random(Math.floor()) * config.width,Math.random(Math.floor()) * config.height,20,randomColor())
 				this.physics.add.existing(g.circle)
 				g.circle.body.setVelocity(randomVelocity(), randomVelocity())
-				g.circle.body.setCollideWorldBounds(true,1,1)
+				g.circle.body.setCollideWorldBounds(true,1.1,1.1)
+				
 				g.arr.push(g.circle)
 			}
-		},7500)*/
+		},7500)
+		
+		this.physics.add.collider(g.arr)
 		//Only changed two things, height and delay. Can I add a function that allows me to write the code once and reference it to add two instances of itself with only the changed values needing to be written?
 
 		setInterval(() => {
