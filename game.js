@@ -8,7 +8,7 @@ class GameScene extends Phaser.Scene {
 	}
 
 	create() {
-		g.number = 5
+		g.number = 15
 		g.arr = []
 		
 		setTimeout(() => {
@@ -16,7 +16,7 @@ class GameScene extends Phaser.Scene {
 				g.circle = this.add.circle(Math.random(Math.floor()) * config.width,Math.random(Math.floor()) * config.height,10,randomColor())
 				this.physics.add.existing(g.circle)
 				g.circle.body.setVelocity(randomVelocity(), randomVelocity())
-				g.circle.body.setCollideWorldBounds(true,1,1)
+				g.circle.body.setCollideWorldBounds(true,1.2,.8)
 				g.arr.push(g.circle)
 				this.physics.add.collider(g.arr);
 		}
@@ -26,9 +26,10 @@ class GameScene extends Phaser.Scene {
 				g.circle = this.add.circle(Math.random(Math.floor()) * config.width,Math.random(Math.floor()) * config.height,15,randomColor())
 				this.physics.add.existing(g.circle)
 				g.circle.body.setVelocity(randomVelocity(), randomVelocity())
-				g.circle.body.setCollideWorldBounds(true,1,1)
-				g.arr.push(g.circle)
-				this.physics.add.collider(g.arr);
+				g.circle.body.setCollideWorldBounds(true,.8,1.2)
+				this.physics.add.collider(g.arr)
+				g.arr.push(g.circle);
+				
 		}
 		},5000)
 		
@@ -47,7 +48,8 @@ class GameScene extends Phaser.Scene {
 			for (let i = 0; i < g.arr.length; i++) {
 				g.arr[i].fillColor = randomColor()
 			}
-		},2750)
+		},5000)
+		
 	}
 	
 	update() {
