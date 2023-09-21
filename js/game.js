@@ -4,57 +4,74 @@ class GameScene extends Phaser.Scene {
 	}
 
 	preload() {
-	
+
 	}
 
 	create() {
 		g.number = 15
 		g.arr = []
-		
+
 		setTimeout(() => {
 			for (let i = 0; i < g.number; i++) {
-				g.circle = this.add.circle(Math.random(Math.floor()) * config.width,Math.random(Math.floor()) * config.height,10,randomColor())
+				g.circle = this.add.circle(Math.random(Math.floor()) * config.width, Math.random(Math.floor()) * config.height, 10, randomColor())
 				this.physics.add.existing(g.circle)
 				g.circle.body.setVelocity(randomVelocity(), randomVelocity())
-				g.circle.body.setCollideWorldBounds(true,1.5,1)
+				g.circle.body.setCollideWorldBounds(true, 1, 1)
+				g.circle.body.setBounce(1, 1)
 				g.arr.push(g.circle)
-		  }
-		},2500)
+
+			}
+		}, 3000)
 		setTimeout(() => {
 			for (let i = 0; i < g.number; i++) {
-				g.circle = this.add.circle(Math.random(Math.floor()) * config.width,Math.random(Math.floor()) * config.height,15,randomColor())
+				g.circle = this.add.circle(Math.random(Math.floor()) * config.width, Math.random(Math.floor()) * config.height, 15, randomColor())
 				this.physics.add.existing(g.circle)
 				g.circle.body.setVelocity(randomVelocity(), randomVelocity())
-				g.circle.body.setCollideWorldBounds(true,1.5,1)
+				g.circle.body.setCollideWorldBounds(true, 1, 1)
+				g.circle.body.setBounce(1, 0.5)
 				g.arr.push(g.circle);
-				
-		}
-		},5000)
-		
+
+			}
+		}, 6000)
+
 		setTimeout(() => {
 			for (let i = 0; i < g.number; i++) {
-				g.circle = this.add.circle(Math.random(Math.floor()) * config.width,Math.random(Math.floor()) * config.height,20,randomColor())
+				g.circle = this.add.circle(Math.random(Math.floor()) * config.width, Math.random(Math.floor()) * config.height, 20, randomColor())
 				this.physics.add.existing(g.circle)
 				g.circle.body.setVelocity(randomVelocity(), randomVelocity())
-				g.circle.body.setCollideWorldBounds(true,1.5,1)
-				
+				g.circle.body.setCollideWorldBounds(true, 1, 1)
+
 				g.arr.push(g.circle)
 			}
-		},7500)
-		
+		}, 9000)
+
 		this.physics.add.collider(g.arr)
+
 		//Only changed two things, height and delay. Can I add a function that allows me to write the code once and reference it to add two instances of itself with only the changed values needing to be written?
 
 		setInterval(() => {
 			for (let i = 0; i < g.arr.length; i++) {
 				g.arr[i].fillColor = randomColor()
 			}
-		},5000)
-		
+		}, 5000)
+
+		this.input.on('pointerdown', function () {
+
+			this.sys.game.destroy(true);
+
+			document.addEventListener('mousedown', function newGame() {
+
+				game = new Phaser.Game(config);
+
+				document.removeEventListener('mousedown', newGame);
+
+			});
+
+		}, this);
 	}
-	
+
 	update() {
-	
+
 	}
 }
 
@@ -79,7 +96,7 @@ function randomColor() {
 		//returns a number from 0 to 15
 	}
 	//concats 0x to random hexdec 'c'
-	return '0x' + c 
+	return '0x' + c
 }
 
 //refresh window on resize
@@ -93,11 +110,11 @@ const config = {
 	type: Phaser.AUTO,
 	height: window.innerHeight,
 	width: window.innerWidth,
-	backgroundColor: '#333333',
+	backgroundColor: '#000000',
 	physics: {
 		default: 'arcade',
 		arcade: {
-			gravity: {y:0, x:0},
+			gravity: { y: 0, x: 0 },
 			debug: false
 		}
 	},
