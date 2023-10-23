@@ -1,15 +1,3 @@
----
-Title: BouncingBalls
-Creator: `DZLD`
-Description: Basic Phaser 3 example
-Content:
-  - HTML
-  - CSS
-  - JS
-
-Framework: Phaser 3
----
-
 # What
 
 ***Bouncing Balls***
